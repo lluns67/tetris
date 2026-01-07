@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>테트리스</title>
+  <style>
+    body { background:#111; color:#eee; font-family:system-ui, sans-serif; display:flex; gap:24px; justify-content:center; align-items:flex-start; padding:24px; }
+    #game { border:2px solid #444; background:#000; }
+    .panel { min-width:220px; }
+    .panel h2 { margin:0 0 8px; font-size:18px; color:#9fd; }
+    .panel p { margin:6px 0; }
+    .mini { border:1px solid #333; background:#000; }
+    .btn { margin-top:10px; padding:8px 12px; background:#234; color:#9fd; border:1px solid #456; cursor:pointer; }
+    .btn:hover { background:#2a4f; }
+  </style>
+</head>
+<body>
+  <canvas id="game" width="300" height="600"></canvas>
+  <div class="panel">
+    <h2>테트리스</h2>
+    <p><strong>점수:</strong> <span id="score">0</span></p>
+    <p><strong>레벨:</strong> <span id="level">1</span></p>
+    <p><strong>줄 제거:</strong> <span id="lines">0</span></p>
+    <p><strong>다음 블록:</strong></p>
+    <canvas id="next" class="mini" width="120" height="120"></canvas>
+    <button class="btn" id="restart">다시 시작</button>
+    <p>
+      <strong>조작:</strong><br/>
+      ↑ 회전, shift 역회전
+    </p>
+    <button class="btn" id="ghostBtn">그림자</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+  <script>
+    // 설정
+    const COLS = 10, ROWS = 20, TILE = 30; // 캔버스 그리드 10x20, 타일 30px
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    const nextCanvas = document.getElementById('next');
+    const nctx = nextCanvas.getContext('2d');
+    
+
+    // 색상 팔레트
+    const COLORS = {
+        1: '#00f0f0', // I
+        2: '#f0f000', // O
+        3: '#a000f0', // T
+        4: '#00f000', // S
+        5: '#f00000', // Z
+        6: '#0000f0', // J
+        7: '#f0a000'  // L
+    };
+
+    let stompClient = null;
+    let sessionId = "";
+
+    function connect() {
+        const socket = new SockJS('/ws');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+
+            const url = stompClient.ws._transport.url;
+            sessionId = url.substring(url.lastIndexOf('/') - 8, url.lastIndexOf('/'));
+            console.log("Session ID: " + sessionId);
+
+            stompClient.subscribe('/topic/game/' + sessionId, function (gameState) {
+                const game = JSON.parse(gameState.body);
+                drawGame(game);
+            });
+
+            stompClient.send("/app/start", {}, JSON.stringify({}));
+        });
+    }
+
+    function sendMove(direction) {
+        if (stompClient && stompClient.connected) {
+            stompClient.send("/app/move", {}, direction);
+        }
+    }
+
+    function drawGame(game) {
+        // Draw board
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let y = 0; y < ROWS; y++) {
+            for (let x = 0; x < COLS; x++) {
+                const cell = game.board[y][x];
+                if (cell !== 0) {
+                    drawCell(ctx, x, y, COLORS[cell]);
+                }
+            }
+        }
+        
+        // Draw current piece
+        if (game.currentPiece) {
+            const piece = game.currentPiece;
+            const shape = piece.shape;
+            const color = COLORS[piece.shapeIndex + 1];
+            for (let y = 0; y < shape.length; y++) {
+                for (let x = 0; x < shape[y].length; x++) {
+                    if (shape[y][x] !== 0) {
+                        drawCell(ctx, piece.position.x + x, piece.position.y + y, color);
+                    }
+                }
+            }
+        }
+
+        // Draw next piece
+        nctx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
+        if (game.nextPiece) {
+            const piece = game.nextPiece;
+            const shape = piece.shape;
+            const color = COLORS[piece.shapeIndex + 1];
+             const xs = [];
+             const ys = [];
+             for(let y=0; y<shape.length; y++){
+                 for(let x=0; x<shape[y].length; x++){
+                     if(shape[y][x] !== 0){
+                         xs.push(x);
+                         ys.push(y);
+                     }
+                 }
+             }
+            const minX = Math.min(...xs), maxX = Math.max(...xs);
+            const minY = Math.min(...ys), maxY = Math.max(...ys);
+            const w = (maxX - minX + 1) * 24;
+            const h = (maxY - minY + 1) * 24;
+            const offsetX = (nextCanvas.width - w) / 2 - minX * 24;
+            const offsetY = (nextCanvas.height - h) / 2 - minY * 24;
+
+            for (let y = 0; y < shape.length; y++) {
+                for (let x = 0; x < shape[y].length; x++) {
+                    if (shape[y][x] !== 0) {
+                       drawCell(nctx, (offsetX/24) + x, (offsetY/24) + y, color, 24);
+                    }
+                }
+            }
+        }
+
+        // Update score
+        document.getElementById('score').textContent = game.score;
+        document.getElementById('lines').textContent = game.linesCleared;
+        
+        // Game Over
+        if (game.gameOver) {
+            ctx.fillStyle = 'rgba(0,0,0,0.6)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#fff';
+            ctx.textAlign = 'center';
+            ctx.font = 'bold 28px system-ui';
+            ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2);
+        }
+    }
+
+    function drawCell(context, x, y, color, size = TILE) {
+        context.fillStyle = color;
+        context.fillRect(x * size, y * size, size, size);
+        context.strokeStyle = '#111';
+        context.lineWidth = 2;
+        context.strokeRect(x * size, y * size, size, size);
+    }
+
+    window.addEventListener('keydown', (e) => {
+        if (stompClient && stompClient.connected) {
+            switch (e.code) {
+                case 'ArrowLeft': sendMove('left'); break;
+                case 'ArrowRight': sendMove('right'); break;
+                case 'ArrowUp': sendMove('rotate'); break;
+                case 'ArrowDown': sendMove('down'); break; // soft drop
+                case 'Space': sendMove('drop'); break; // hard drop
+            }
+        }
+    });
+    
+    document.getElementById('restart').addEventListener('click', () => {
+      location.reload();
+    });
+
+    connect();
+    
+  </script>
+</body>
+</html>
