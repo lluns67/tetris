@@ -1,94 +1,119 @@
-2026-01-08T00:17:30.693+09:00  INFO 12452 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Starting TetrisApplication using Java 21.0.6 with PID 12452 (C:\Users\a\Desktop\tetris\multitetris\tetris\build\classes\java\main started by a in C:\Users\a\Desktop\tetris\multitetris\tetris)
-2026-01-08T00:17:30.696+09:00 DEBUG 12452 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Running with Spring Boot v3.5.9, Spring v6.2.15
-2026-01-08T00:17:30.698+09:00  INFO 12452 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : No active profile set, falling back to 1 default profile: "default"
-2026-01-08T00:17:30.798+09:00  INFO 12452 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-01-08T00:17:30.799+09:00  INFO 12452 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-01-08T00:17:32.243+09:00  INFO 12452 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9999 (http)
-2026-01-08T00:17:32.258+09:00  INFO 12452 --- [tetris] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-01-08T00:17:32.259+09:00  INFO 12452 --- [tetris] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-01-08T00:17:32.304+09:00  INFO 12452 --- [tetris] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-01-08T00:17:32.304+09:00  INFO 12452 --- [tetris] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1504 ms
-2026-01-08T00:17:32.768+09:00  INFO 12452 --- [tetris] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-01-08T00:17:32.810+09:00  INFO 12452 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9999 (http) with context path '/'
-2026-01-08T00:17:32.819+09:00  INFO 12452 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Started TetrisApplication in 2.765 seconds (process running for 3.266)
-2026-01-08T00:17:42.424+09:00  INFO 12452 --- [tetris] [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-01-08T00:17:42.425+09:00  INFO 12452 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-01-08T00:17:42.427+09:00  INFO 12452 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2026-01-08T00:55:34.293+09:00  INFO 13228 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Starting TetrisApplication using Java 21.0.6 with PID 13228 (C:\Users\a\Desktop\tetris\multitetris\tetris\build\classes\java\main started by a in C:\Users\a\Desktop\tetris\multitetris\tetris)
-2026-01-08T00:55:34.295+09:00 DEBUG 13228 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Running with Spring Boot v3.5.9, Spring v6.2.15
-2026-01-08T00:55:34.296+09:00  INFO 13228 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : No active profile set, falling back to 1 default profile: "default"
-2026-01-08T00:55:34.354+09:00  INFO 13228 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-01-08T00:55:34.355+09:00  INFO 13228 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-01-08T00:55:35.472+09:00  INFO 13228 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9999 (http)
-2026-01-08T00:55:35.491+09:00  INFO 13228 --- [tetris] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-01-08T00:55:35.491+09:00  INFO 13228 --- [tetris] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-01-08T00:55:35.547+09:00  INFO 13228 --- [tetris] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-01-08T00:55:35.547+09:00  INFO 13228 --- [tetris] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1191 ms
-2026-01-08T00:55:36.041+09:00  INFO 13228 --- [tetris] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-01-08T00:55:36.057+09:00  INFO 13228 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2026-01-08T00:55:36.059+09:00  INFO 13228 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@26106bab]]
-2026-01-08T00:55:36.060+09:00  INFO 13228 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2026-01-08T00:55:36.078+09:00  INFO 13228 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9999 (http) with context path '/'
-2026-01-08T00:55:36.084+09:00  INFO 13228 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Started TetrisApplication in 2.407 seconds (process running for 2.822)
-2026-01-08T00:55:41.169+09:00  INFO 13228 --- [tetris] [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-01-08T00:55:41.170+09:00  INFO 13228 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-01-08T00:55:41.171+09:00  INFO 13228 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2026-01-08T00:56:36.061+09:00  INFO 13228 --- [tetris] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
-2026-01-08T00:57:24.181+09:00  INFO 10424 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Starting TetrisApplication using Java 21.0.6 with PID 10424 (C:\Users\a\Desktop\tetris\multitetris\tetris\build\classes\java\main started by a in C:\Users\a\Desktop\tetris\multitetris\tetris)
-2026-01-08T00:57:24.183+09:00 DEBUG 10424 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Running with Spring Boot v3.5.9, Spring v6.2.15
-2026-01-08T00:57:24.186+09:00  INFO 10424 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : No active profile set, falling back to 1 default profile: "default"
-2026-01-08T00:57:24.274+09:00  INFO 10424 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-01-08T00:57:24.275+09:00  INFO 10424 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-01-08T00:57:25.431+09:00  INFO 10424 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9999 (http)
-2026-01-08T00:57:25.447+09:00  INFO 10424 --- [tetris] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-01-08T00:57:25.448+09:00  INFO 10424 --- [tetris] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-01-08T00:57:25.493+09:00  INFO 10424 --- [tetris] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-01-08T00:57:25.493+09:00  INFO 10424 --- [tetris] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1218 ms
-2026-01-08T00:57:25.970+09:00  INFO 10424 --- [tetris] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-01-08T00:57:25.983+09:00  INFO 10424 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2026-01-08T00:57:25.985+09:00  INFO 10424 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@653a3b39]]
-2026-01-08T00:57:25.989+09:00  INFO 10424 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2026-01-08T00:57:26.013+09:00  INFO 10424 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9999 (http) with context path '/'
-2026-01-08T00:57:26.021+09:00  INFO 10424 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Started TetrisApplication in 2.523 seconds (process running for 2.971)
-2026-01-08T00:57:26.248+09:00  INFO 10424 --- [tetris] [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-01-08T00:57:26.250+09:00  INFO 10424 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-01-08T00:57:26.254+09:00  INFO 10424 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
-2026-01-08T01:00:46.446+09:00  INFO 3192 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Starting TetrisApplication using Java 21.0.6 with PID 3192 (C:\Users\a\Desktop\tetris\multitetris\tetris\build\classes\java\main started by a in C:\Users\a\Desktop\tetris\multitetris\tetris)
-2026-01-08T01:00:46.447+09:00 DEBUG 3192 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Running with Spring Boot v3.5.9, Spring v6.2.15
-2026-01-08T01:00:46.448+09:00  INFO 3192 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : No active profile set, falling back to 1 default profile: "default"
-2026-01-08T01:00:46.525+09:00  INFO 3192 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-01-08T01:00:46.525+09:00  INFO 3192 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-01-08T01:00:48.696+09:00  INFO 3192 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9999 (http)
-2026-01-08T01:00:48.717+09:00  INFO 3192 --- [tetris] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-01-08T01:00:48.718+09:00  INFO 3192 --- [tetris] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-01-08T01:00:48.759+09:00  INFO 3192 --- [tetris] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-01-08T01:00:48.759+09:00  INFO 3192 --- [tetris] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2233 ms
-2026-01-08T01:00:49.257+09:00  INFO 3192 --- [tetris] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-01-08T01:00:49.272+09:00  INFO 3192 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2026-01-08T01:00:49.276+09:00  INFO 3192 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@462f207f]]
-2026-01-08T01:00:49.277+09:00  INFO 3192 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2026-01-08T01:00:49.297+09:00  INFO 3192 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9999 (http) with context path '/'
-2026-01-08T01:00:49.308+09:00  INFO 3192 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Started TetrisApplication in 3.547 seconds (process running for 4.202)
-2026-01-08T01:00:49.397+09:00  INFO 3192 --- [tetris] [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-01-08T01:00:49.397+09:00  INFO 3192 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-01-08T01:00:49.399+09:00  INFO 3192 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2026-01-08T01:06:42.420+09:00  INFO 8740 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Starting TetrisApplication using Java 21.0.6 with PID 8740 (C:\Users\a\Desktop\tetris\multitetris\tetris\build\classes\java\main started by a in C:\Users\a\Desktop\tetris\multitetris\tetris)
-2026-01-08T01:06:42.426+09:00 DEBUG 8740 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Running with Spring Boot v3.5.9, Spring v6.2.15
-2026-01-08T01:06:42.427+09:00  INFO 8740 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : No active profile set, falling back to 1 default profile: "default"
-2026-01-08T01:06:42.665+09:00  INFO 8740 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-01-08T01:06:42.666+09:00  INFO 8740 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-01-08T01:06:45.489+09:00  INFO 8740 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9999 (http)
-2026-01-08T01:06:45.510+09:00  INFO 8740 --- [tetris] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-01-08T01:06:45.511+09:00  INFO 8740 --- [tetris] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-01-08T01:06:45.572+09:00  INFO 8740 --- [tetris] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-01-08T01:06:45.573+09:00  INFO 8740 --- [tetris] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2905 ms
-2026-01-08T01:06:46.324+09:00  INFO 8740 --- [tetris] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-01-08T01:06:46.357+09:00  INFO 8740 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2026-01-08T01:06:46.360+09:00  INFO 8740 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@5251526e]]
-2026-01-08T01:06:46.361+09:00  INFO 8740 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2026-01-08T01:06:46.405+09:00  INFO 8740 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9999 (http) with context path '/'
-2026-01-08T01:06:46.424+09:00  INFO 8740 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Started TetrisApplication in 4.78 seconds (process running for 5.413)
-2026-01-08T01:06:46.621+09:00  INFO 8740 --- [tetris] [http-nio-9999-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-01-08T01:06:46.622+09:00  INFO 8740 --- [tetris] [http-nio-9999-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-01-08T01:06:46.623+09:00  INFO 8740 --- [tetris] [http-nio-9999-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2026-01-08T01:07:46.408+09:00  INFO 8740 --- [tetris] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2026-01-17T22:41:27.883+09:00  INFO 3936 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Starting TetrisApplication using Java 21.0.6 with PID 3936 (C:\Users\a\Desktop\tetris\multitetris\tetris\build\classes\java\main started by a in C:\Users\a\Desktop\tetris\multitetris\tetris)
+2026-01-17T22:41:27.898+09:00 DEBUG 3936 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Running with Spring Boot v3.5.9, Spring v6.2.15
+2026-01-17T22:41:27.899+09:00  INFO 3936 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : No active profile set, falling back to 1 default profile: "default"
+2026-01-17T22:41:27.980+09:00  INFO 3936 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-17T22:41:27.982+09:00  INFO 3936 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-17T22:41:29.557+09:00  INFO 3936 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9999 (http)
+2026-01-17T22:41:29.574+09:00  INFO 3936 --- [tetris] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-17T22:41:29.574+09:00  INFO 3936 --- [tetris] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-01-17T22:41:29.619+09:00  INFO 3936 --- [tetris] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-17T22:41:29.620+09:00  INFO 3936 --- [tetris] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1638 ms
+2026-01-17T22:41:30.134+09:00  INFO 3936 --- [tetris] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-01-17T22:41:30.150+09:00  INFO 3936 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-01-17T22:41:30.153+09:00  INFO 3936 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@22504cc0]]
+2026-01-17T22:41:30.154+09:00  INFO 3936 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-01-17T22:41:30.174+09:00  INFO 3936 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9999 (http) with context path '/'
+2026-01-17T22:41:30.183+09:00  INFO 3936 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Started TetrisApplication in 2.877 seconds (process running for 3.308)
+2026-01-17T22:41:56.309+09:00  INFO 3936 --- [tetris] [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-17T22:41:56.312+09:00  INFO 3936 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-17T22:41:56.317+09:00  INFO 3936 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-01-17T22:41:59.103+09:00 DEBUG 3936 --- [tetris] [clientInboundChannel-7] n.d.t.controller.GameSocketController    : Join request from: qoaiqy42
+2026-01-17T22:42:21.734+09:00 DEBUG 3936 --- [tetris] [http-nio-9999-exec-2] n.d.t.controller.GameSocketController    : Session disconnected: qoaiqy42
+2026-01-17T22:46:14.826+09:00  INFO 13708 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Starting TetrisApplication using Java 21.0.6 with PID 13708 (C:\Users\a\Desktop\tetris\multitetris\tetris\build\classes\java\main started by a in C:\Users\a\Desktop\tetris\multitetris\tetris)
+2026-01-17T22:46:14.829+09:00 DEBUG 13708 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Running with Spring Boot v3.5.9, Spring v6.2.15
+2026-01-17T22:46:14.830+09:00  INFO 13708 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : No active profile set, falling back to 1 default profile: "default"
+2026-01-17T22:46:15.030+09:00  INFO 13708 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-17T22:46:15.031+09:00  INFO 13708 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-17T22:46:19.034+09:00  INFO 13708 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9999 (http)
+2026-01-17T22:46:19.187+09:00  INFO 13708 --- [tetris] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-17T22:46:19.189+09:00  INFO 13708 --- [tetris] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-01-17T22:46:19.454+09:00  INFO 13708 --- [tetris] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-17T22:46:19.455+09:00  INFO 13708 --- [tetris] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4423 ms
+2026-01-17T22:46:20.363+09:00  INFO 13708 --- [tetris] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-01-17T22:46:20.386+09:00  INFO 13708 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-01-17T22:46:20.389+09:00  INFO 13708 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3b322fb2]]
+2026-01-17T22:46:20.390+09:00  INFO 13708 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-01-17T22:46:20.451+09:00  INFO 13708 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9999 (http) with context path '/'
+2026-01-17T22:46:20.462+09:00  INFO 13708 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Started TetrisApplication in 6.321 seconds (process running for 6.806)
+2026-01-17T22:46:24.246+09:00  INFO 13708 --- [tetris] [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-17T22:46:24.246+09:00  INFO 13708 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-17T22:46:24.248+09:00  INFO 13708 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-17T22:46:26.386+09:00 DEBUG 13708 --- [tetris] [clientInboundChannel-7] n.d.t.controller.GameSocketController    : Join request from: 4de32it1
+2026-01-17T22:47:20.403+09:00  INFO 13708 --- [tetris] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 8, active threads = 0, queued tasks = 0, completed tasks = 12], outboundChannel[pool size = 2, active threads = 0, queued tasks = 0, completed tasks = 2], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 13]
+2026-01-17T22:48:10.937+09:00 DEBUG 13708 --- [tetris] [clientInboundChannel-15] n.d.t.controller.GameSocketController    : Join request from: 3dpt1a2l
+2026-01-17T22:48:18.178+09:00 DEBUG 13708 --- [tetris] [clientInboundChannel-16] n.d.t.controller.GameSocketController    : Starting game for room: 740d59cd-79a6-419a-ae93-34b106bdc822
+2026-01-17T22:50:06.187+09:00 DEBUG 13708 --- [tetris] [pool-2-thread-1] n.d.t.controller.GameSocketController    : Game over for room: 740d59cd-79a6-419a-ae93-34b106bdc822
+2026-01-17T22:58:00.790+09:00  INFO 2792 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Starting TetrisApplication using Java 21.0.6 with PID 2792 (C:\Users\a\Desktop\tetris\multitetris\tetris\build\classes\java\main started by a in C:\Users\a\Desktop\tetris\multitetris\tetris)
+2026-01-17T22:58:00.797+09:00 DEBUG 2792 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Running with Spring Boot v3.5.9, Spring v6.2.15
+2026-01-17T22:58:00.799+09:00  INFO 2792 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : No active profile set, falling back to 1 default profile: "default"
+2026-01-17T22:58:00.899+09:00  INFO 2792 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-17T22:58:00.900+09:00  INFO 2792 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-17T22:58:02.746+09:00  INFO 2792 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9999 (http)
+2026-01-17T22:58:02.765+09:00  INFO 2792 --- [tetris] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-17T22:58:02.766+09:00  INFO 2792 --- [tetris] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-01-17T22:58:02.816+09:00  INFO 2792 --- [tetris] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-17T22:58:02.817+09:00  INFO 2792 --- [tetris] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1915 ms
+2026-01-17T22:58:03.645+09:00  INFO 2792 --- [tetris] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-01-17T22:58:03.696+09:00  INFO 2792 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-01-17T22:58:03.707+09:00  INFO 2792 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@41c09459]]
+2026-01-17T22:58:03.711+09:00  INFO 2792 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-01-17T22:58:03.827+09:00  INFO 2792 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9999 (http) with context path '/'
+2026-01-17T22:58:03.877+09:00  INFO 2792 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Started TetrisApplication in 3.86 seconds (process running for 4.461)
+2026-01-17T22:58:04.703+09:00  INFO 2792 --- [tetris] [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-17T22:58:04.703+09:00  INFO 2792 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-17T22:58:04.706+09:00  INFO 2792 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-17T22:58:05.278+09:00 DEBUG 2792 --- [tetris] [clientInboundChannel-7] n.d.t.controller.GameSocketController    : Join request from: 4v33htnt
+2026-01-17T22:58:07.333+09:00 DEBUG 2792 --- [tetris] [clientInboundChannel-2] n.d.t.controller.GameSocketController    : Join request from: exba3q0r
+2026-01-17T22:58:13.930+09:00 DEBUG 2792 --- [tetris] [clientInboundChannel-6] n.d.t.controller.GameSocketController    : Starting game for room: 559e5c79-d827-4280-b8a7-8a1c91be1a29
+2026-01-17T22:59:03.700+09:00  INFO 2792 --- [tetris] [MessageBroker-2] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 8, active threads = 0, queued tasks = 0, completed tasks = 657], outboundChannel[pool size = 8, active threads = 0, queued tasks = 0, completed tasks = 521], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 12]
+2026-01-17T22:59:39.946+09:00 DEBUG 2792 --- [tetris] [pool-2-thread-1] n.d.t.controller.GameSocketController    : Game over for room: 559e5c79-d827-4280-b8a7-8a1c91be1a29
+2026-01-17T23:00:00.614+09:00 DEBUG 2792 --- [tetris] [http-nio-9999-exec-7] n.d.t.controller.GameSocketController    : Session disconnected: exba3q0r
+2026-01-17T23:00:00.690+09:00 DEBUG 2792 --- [tetris] [clientInboundChannel-7] n.d.t.controller.GameSocketController    : Join request from: jkuelj1c
+2026-01-17T23:00:03.197+09:00 DEBUG 2792 --- [tetris] [http-nio-9999-exec-5] n.d.t.controller.GameSocketController    : Session disconnected: 4v33htnt
+2026-01-17T23:00:03.346+09:00 DEBUG 2792 --- [tetris] [clientInboundChannel-8] n.d.t.controller.GameSocketController    : Join request from: 435pwtkd
+2026-01-17T23:00:07.959+09:00 DEBUG 2792 --- [tetris] [clientInboundChannel-1] n.d.t.controller.GameSocketController    : Starting game for room: db5d58b7-2028-4505-9e42-2c637ca50eee
+2026-01-17T23:01:22.969+09:00 DEBUG 2792 --- [tetris] [pool-3-thread-1] n.d.t.controller.GameSocketController    : Game over for room: db5d58b7-2028-4505-9e42-2c637ca50eee
+2026-01-17T23:01:45.520+09:00 DEBUG 2792 --- [tetris] [http-nio-9999-exec-8] n.d.t.controller.GameSocketController    : Session disconnected: jkuelj1c
+2026-01-17T23:01:45.594+09:00 DEBUG 2792 --- [tetris] [clientInboundChannel-6] n.d.t.controller.GameSocketController    : Join request from: 4oe04yob
+2026-01-17T23:01:47.362+09:00 DEBUG 2792 --- [tetris] [http-nio-9999-exec-7] n.d.t.controller.GameSocketController    : Session disconnected: 435pwtkd
+2026-01-17T23:01:47.512+09:00 DEBUG 2792 --- [tetris] [clientInboundChannel-7] n.d.t.controller.GameSocketController    : Join request from: 1diy1nou
+2026-01-17T23:01:50.122+09:00 DEBUG 2792 --- [tetris] [clientInboundChannel-6] n.d.t.controller.GameSocketController    : Starting game for room: fd9ef7b7-2a01-4aae-84d8-69431f9e88ac
+2026-01-17T23:03:10.134+09:00 DEBUG 2792 --- [tetris] [pool-4-thread-1] n.d.t.controller.GameSocketController    : Game over for room: fd9ef7b7-2a01-4aae-84d8-69431f9e88ac
+2026-01-17T23:04:20.810+09:00 DEBUG 2792 --- [tetris] [http-nio-9999-exec-6] n.d.t.controller.GameSocketController    : Session disconnected: 1diy1nou
+2026-01-17T23:09:46.876+09:00  INFO 2172 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Starting TetrisApplication using Java 21.0.6 with PID 2172 (C:\Users\a\Desktop\tetris\multitetris\tetris\build\classes\java\main started by a in C:\Users\a\Desktop\tetris\multitetris\tetris)
+2026-01-17T23:09:46.883+09:00 DEBUG 2172 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Running with Spring Boot v3.5.9, Spring v6.2.15
+2026-01-17T23:09:46.885+09:00  INFO 2172 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : No active profile set, falling back to 1 default profile: "default"
+2026-01-17T23:09:46.976+09:00  INFO 2172 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-17T23:09:46.977+09:00  INFO 2172 --- [tetris] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-17T23:09:48.906+09:00  INFO 2172 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9999 (http)
+2026-01-17T23:09:48.928+09:00  INFO 2172 --- [tetris] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-17T23:09:48.928+09:00  INFO 2172 --- [tetris] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-01-17T23:09:49.003+09:00  INFO 2172 --- [tetris] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-17T23:09:49.004+09:00  INFO 2172 --- [tetris] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2027 ms
+2026-01-17T23:09:49.840+09:00  INFO 2172 --- [tetris] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-01-17T23:09:49.874+09:00  INFO 2172 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2026-01-17T23:09:49.877+09:00  INFO 2172 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@4c5dbbd1]]
+2026-01-17T23:09:49.886+09:00  INFO 2172 --- [tetris] [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2026-01-17T23:09:49.958+09:00  INFO 2172 --- [tetris] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9999 (http) with context path '/'
+2026-01-17T23:09:49.975+09:00  INFO 2172 --- [tetris] [restartedMain] net.datasa.tetris.TetrisApplication      : Started TetrisApplication in 3.781 seconds (process running for 4.29)
+2026-01-17T23:09:54.070+09:00  INFO 2172 --- [tetris] [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-17T23:09:54.070+09:00  INFO 2172 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-17T23:09:54.071+09:00  INFO 2172 --- [tetris] [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-01-17T23:09:54.485+09:00 DEBUG 2172 --- [tetris] [clientInboundChannel-7] n.d.t.controller.GameSocketController    : Join request from: 20hg4irf
+2026-01-17T23:10:08.389+09:00 DEBUG 2172 --- [tetris] [clientInboundChannel-4] n.d.t.controller.GameSocketController    : Join request from: jemuqufg
+2026-01-17T23:10:14.008+09:00 DEBUG 2172 --- [tetris] [clientInboundChannel-1] n.d.t.controller.GameSocketController    : Starting game for room: 32161d87-7677-468a-b213-0b5248a84f50
+2026-01-17T23:10:49.876+09:00  INFO 2172 --- [tetris] [MessageBroker-3] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[2 current WS(2)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 8, active threads = 0, queued tasks = 0, completed tasks = 624], outboundChannel[pool size = 8, active threads = 0, queued tasks = 0, completed tasks = 475], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 12]
+2026-01-17T23:11:25.016+09:00 DEBUG 2172 --- [tetris] [pool-2-thread-1] n.d.t.controller.GameSocketController    : Game over for room: 32161d87-7677-468a-b213-0b5248a84f50
+2026-01-17T23:13:01.221+09:00 DEBUG 2172 --- [tetris] [http-nio-9999-exec-2] n.d.t.controller.GameSocketController    : Session disconnected: 20hg4irf
+2026-01-17T23:13:01.291+09:00 DEBUG 2172 --- [tetris] [clientInboundChannel-2] n.d.t.controller.GameSocketController    : Join request from: yjb0i4nc
+2026-01-17T23:13:02.503+09:00 DEBUG 2172 --- [tetris] [http-nio-9999-exec-10] n.d.t.controller.GameSocketController    : Session disconnected: jemuqufg
+2026-01-17T23:13:02.580+09:00 DEBUG 2172 --- [tetris] [clientInboundChannel-7] n.d.t.controller.GameSocketController    : Join request from: dnn5v312
+2026-01-17T23:13:05.790+09:00 DEBUG 2172 --- [tetris] [clientInboundChannel-5] n.d.t.controller.GameSocketController    : Starting game for room: 41bdb43c-bb96-4949-baa6-77ed016c25bb
+2026-01-17T23:14:06.800+09:00 DEBUG 2172 --- [tetris] [pool-3-thread-1] n.d.t.controller.GameSocketController    : Game over for room: 41bdb43c-bb96-4949-baa6-77ed016c25bb
+2026-01-17T23:14:08.824+09:00 DEBUG 2172 --- [tetris] [http-nio-9999-exec-4] n.d.t.controller.GameSocketController    : Session disconnected: yjb0i4nc
+2026-01-17T23:14:08.886+09:00 DEBUG 2172 --- [tetris] [clientInboundChannel-1] n.d.t.controller.GameSocketController    : Join request from: gm5w1sqb
+2026-01-17T23:14:11.088+09:00 DEBUG 2172 --- [tetris] [http-nio-9999-exec-7] n.d.t.controller.GameSocketController    : Session disconnected: dnn5v312
+2026-01-17T23:14:11.201+09:00 DEBUG 2172 --- [tetris] [clientInboundChannel-4] n.d.t.controller.GameSocketController    : Join request from: roz43ccc
+2026-01-17T23:14:15.005+09:00 DEBUG 2172 --- [tetris] [clientInboundChannel-5] n.d.t.controller.GameSocketController    : Starting game for room: 0c51ede9-69a8-4255-9548-df9de7a55f75
+2026-01-17T23:15:08.021+09:00 DEBUG 2172 --- [tetris] [pool-4-thread-1] n.d.t.controller.GameSocketController    : Game over for room: 0c51ede9-69a8-4255-9548-df9de7a55f75
+2026-01-17T23:15:09.790+09:00 DEBUG 2172 --- [tetris] [http-nio-9999-exec-10] n.d.t.controller.GameSocketController    : Session disconnected: roz43ccc

@@ -85,6 +85,10 @@ public class Piece {
         rotation = (rotation + 1) % rotations.length;
     }
     
+    public void rotateCCW() {
+        rotation = (rotation + rotations.length - 1) % rotations.length;
+    }
+    
     public void unRotate() {
     	rotation = (rotation + rotations.length - 1) % rotations.length;
     }

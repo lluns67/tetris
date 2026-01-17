@@ -10,4 +10,9 @@ public class HomeController {
     public String home(){
         return "home";
     }
+
+    @GetMapping("/tetris")
+    public String tetris(){
+        return "tetris";
+    }
 }

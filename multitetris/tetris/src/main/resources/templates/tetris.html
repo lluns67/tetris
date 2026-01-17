@@ -1,186 +1,500 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>테트리스</title>
-  <style>
-    body { background:#111; color:#eee; font-family:system-ui, sans-serif; display:flex; gap:24px; justify-content:center; align-items:flex-start; padding:24px; }
-    #game { border:2px solid #444; background:#000; }
-    .panel { min-width:220px; }
-    .panel h2 { margin:0 0 8px; font-size:18px; color:#9fd; }
-    .panel p { margin:6px 0; }
-    .mini { border:1px solid #333; background:#000; }
-    .btn { margin-top:10px; padding:8px 12px; background:#234; color:#9fd; border:1px solid #456; cursor:pointer; }
-    .btn:hover { background:#2a4f; }
-  </style>
+    <meta charset="UTF-8">
+    <title>Tetris Battle Royale</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <style>
+        body {
+            background-color: #202028;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #main-container {
+            display: flex;
+            gap: 20px;
+            width: 95%;
+            height: 85vh;
+            justify-content: center;
+        }
+
+        /* LEFT SIDE: My Board + Info */
+        #my-area {
+            display: flex;
+            gap: 20px;
+            background: #2a2a35;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            align-items: flex-start;
+        }
+
+        .board-wrapper {
+            position: relative;
+        }
+
+        canvas.main-board {
+            border: 2px solid #666;
+            background-color: #000;
+        }
+
+        .info-panel {
+            display: flex;
+            flex-direction: column;
+            width: 120px;
+            gap: 20px;
+        }
+
+        .info-box {
+            background: #333;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .info-label { font-size: 0.8rem; color: #aaa; margin-bottom: 5px; }
+        .info-value { font-size: 1.2rem; font-weight: bold; }
+
+        canvas.next-canvas {
+            background: #000;
+            border: 1px solid #444;
+            margin: 0 auto;
+        }
+
+        #ready-btn {
+            padding: 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        #ready-btn:disabled { background: #555; cursor: default; }
+
+        /* RIGHT SIDE: Opponents Grid */
+        #opponents-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 15px;
+            flex-grow: 1;
+            max-width: 800px;
+        }
+
+        .opponent-card {
+            background: #2a2a35;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .opponent-card canvas {
+            border: 1px solid #444;
+            background: #000;
+            width: 100px; /* Scaled down */
+            height: 200px;
+        }
+        
+        .opponent-name {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .status-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #fff;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .ready-badge {
+            background: #28a745;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 5px;
+            display: none;
+        }
+
+        #game-status {
+            position: absolute;
+            top: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .waiting-text { color: #aaa; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+
+    </style>
 </head>
 <body>
-  <canvas id="game" width="300" height="600"></canvas>
-  <div class="panel">
-    <h2>테트리스</h2>
-    <p><strong>점수:</strong> <span id="score">0</span></p>
-    <p><strong>레벨:</strong> <span id="level">1</span></p>
-    <p><strong>줄 제거:</strong> <span id="lines">0</span></p>
-    <p><strong>다음 블록:</strong></p>
-    <canvas id="next" class="mini" width="120" height="120"></canvas>
-    <button class="btn" id="restart">다시 시작</button>
-    <p>
-      <strong>조작:</strong><br/>
-      ↑ 회전, shift 역회전 ?
-    </p>
-    <button class="btn" id="ghostBtn">그림자</button>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
-  <script>
-    // 설정
-    const COLS = 10, ROWS = 20, TILE = 30; // 캔버스 그리드 10x20, 타일 30px
-    const canvas = document.getElementById('game');
-    const ctx = canvas.getContext('2d');
-    const nextCanvas = document.getElementById('next');
-    const nctx = nextCanvas.getContext('2d');
-    
+<div id="game-status" class="waiting-text">Connecting...</div>
 
-    // 색상 팔레트
-    const COLORS = {
-        1: '#00f0f0', // I
-        2: '#f0f000', // O
-        3: '#a000f0', // T
-        4: '#00f000', // S
-        5: '#f00000', // Z
-        6: '#0000f0', // J
-        7: '#f0a000'  // L
-    };
+<div id="main-container" style="display:none;">
+    <!-- MY AREA -->
+    <div id="my-area">
+        <div class="board-wrapper">
+            <canvas id="myCanvas" width="240" height="480" class="main-board"></canvas>
+        </div>
+        <div class="info-panel">
+            <div class="info-box">
+                <div class="info-label">NEXT</div>
+                <canvas id="nextCanvas" width="80" height="80" class="next-canvas"></canvas>
+            </div>
+            <div class="info-box">
+                <div class="info-label">SCORE</div>
+                <div class="info-value" id="myScore">0</div>
+            </div>
+            <div class="info-box">
+                 <div class="info-label">STATUS</div>
+                 <div class="info-value" id="myStatus">WAITING</div>
+            </div>
+            <button id="ready-btn" onclick="sendReady()">READY</button>
+        </div>
+    </div>
 
+    <!-- OPPONENTS AREA (5 Slots) -->
+    <div id="opponents-grid">
+        <!-- Generated via JS -->
+    </div>
+</div>
+
+<script>
+    // Constants
+    const BLOCK_SIZE = 24;
+    const WIDTH = 10;
+    const HEIGHT = 20;
+    const COLORS = [
+        '#000000', '#00FFFF', '#FFFF00', '#800080', 
+        '#00FF00', '#FF0000', '#0000FF', '#FFA500',
+        '#555555' // 8: Garbage
+    ];
+    // Shapes for Ghost calculation (Index matches server Piece.java logic)
+    // 0=I, 1=O, 2=T, 3=S, 4=Z, 5=J, 6=L
+    const SHAPES = [
+        // I
+        [ [ [0,0,0,0], [1,1,1,1], [0,0,0,0], [0,0,0,0] ], [ [0,1,0,0], [0,1,0,0], [0,1,0,0], [0,1,0,0] ] ],
+        // O
+        [ [ [1,1], [1,1] ] ],
+        // T
+        [ [ [0,1,0], [1,1,1], [0,0,0] ], [ [0,1,0], [0,1,1], [0,1,0] ], [ [0,0,0], [1,1,1], [0,1,0] ], [ [0,1,0], [1,1,0], [0,1,0] ] ],
+        // S
+        [ [ [0,1,1], [1,1,0], [0,0,0] ], [ [0,1,0], [0,1,1], [0,0,1] ] ],
+        // Z
+        [ [ [1,1,0], [0,1,1], [0,0,0] ], [ [0,0,1], [0,1,1], [0,1,0] ] ],
+        // J
+        [ [ [0,1,0], [0,1,0], [1,1,0] ], [ [1,0,0], [1,1,1], [0,0,0] ], [ [0,1,1], [0,1,0], [0,1,0] ], [ [0,0,0], [1,1,1], [0,0,1] ] ],
+        // L
+        [ [ [0,1,0], [0,1,0], [0,1,1] ], [ [0,0,0], [1,1,1], [1,0,0] ], [ [1,1,0], [0,1,0], [0,1,0] ], [ [0,0,1], [1,1,1], [0,0,0] ] ]
+    ];
+
+    // State
     let stompClient = null;
-    let sessionId = "";
+    let mySessionId = null;
+    let currentRoomId = null;
+    let isPlaying = false;
+    let isReady = false;
+
+    // Elements
+    const myCanvas = document.getElementById('myCanvas');
+    const myCtx = myCanvas.getContext('2d');
+    const nextCanvas = document.getElementById('nextCanvas');
+    const nextCtx = nextCanvas.getContext('2d');
+    const opponentsGrid = document.getElementById('opponents-grid');
 
     function connect() {
         const socket = new SockJS('/ws');
         stompClient = Stomp.over(socket);
+        stompClient.debug = null; 
+
         stompClient.connect({}, function (frame) {
-            console.log('Connected: ' + frame);
+            console.log('Connected');
+            document.getElementById('game-status').innerText = 'Joining Lobby...';
 
-            const url = stompClient.ws._transport.url;
-            sessionId = url.substring(url.lastIndexOf('/') - 8, url.lastIndexOf('/'));
-            console.log("Session ID: " + sessionId);
+            const url = socket._transport.url;
+            const parts = url.split('/');
+            mySessionId = parts[parts.length - 2];
+            console.log("My Session ID:", mySessionId);
 
-            stompClient.subscribe('/topic/game/' + sessionId, function (gameState) {
-                const game = JSON.parse(gameState.body);
-                drawGame(game);
+            stompClient.subscribe('/topic/game/' + mySessionId, function (message) {
+                const room = JSON.parse(message.body);
+                handleRoomUpdate(room);
             });
 
-            stompClient.send("/app/start", {}, JSON.stringify({}));
+            stompClient.send("/app/join", {}, JSON.stringify({}));
+
+        }, function(error) {
+            console.error(error);
+            document.getElementById('game-status').innerText = 'Connection Lost';
         });
     }
 
-    function sendMove(direction) {
-        if (stompClient && stompClient.connected) {
-            stompClient.send("/app/move", {}, direction);
+    function sendReady() {
+        if (!isPlaying && !isReady) {
+            stompClient.send("/app/ready", {}, {});
+            isReady = true;
+            document.getElementById('ready-btn').disabled = true;
+            document.getElementById('ready-btn').innerText = "READY!";
         }
     }
 
-    function drawGame(game) {
-        // Draw board
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let y = 0; y < ROWS; y++) {
-            for (let x = 0; x < COLS; x++) {
-                const cell = game.board[y][x];
-                if (cell !== 0) {
-                    drawCell(ctx, x, y, COLORS[cell]);
+    function handleRoomUpdate(room) {
+        if (!currentRoomId) {
+            currentRoomId = room.roomId;
+            stompClient.subscribe('/topic/room/' + currentRoomId, function (message) {
+                if (message.body === "PLAYER_LEFT") {
+                    // Just trigger a re-render/logic, though the server usually sends the full room obj
+                    // If server sends string, we might need to handle. 
+                    // But in our controller logic we handle disconnects silently mostly, 
+                    // except for the special string message. 
+                    // Actually controller logic sends string "PLAYER_LEFT" if user leaves.
+                    // Ideally we should just ask for room update, but let's just wait for next update or ignore.
+                    // The backend code I wrote sends "PLAYER_LEFT". 
+                    // Let's rely on standard updates if possible, but "PLAYER_LEFT" means someone left.
+                    return; 
+                }
+                // Try parse
+                try {
+                    const r = JSON.parse(message.body);
+                    updateGameState(r);
+                } catch(e) {}
+            });
+            document.getElementById('main-container').style.display = 'flex';
+        }
+        updateGameState(room);
+    }
+
+    function updateGameState(room) {
+        // Global Status
+        const statusEl = document.getElementById('game-status');
+        if (room.playing) {
+            statusEl.innerText = "IN GAME";
+            statusEl.classList.remove('waiting-text');
+            isPlaying = true;
+            document.getElementById('ready-btn').style.display = 'none';
+        } else {
+            statusEl.innerText = "WAITING FOR PLAYERS";
+            statusEl.classList.add('waiting-text');
+            isPlaying = false;
+        }
+
+        // My Game
+        const myGame = room.games[mySessionId];
+        const myReady = room.readyStatus[mySessionId];
+        
+        if (myGame) {
+            document.getElementById('myScore').innerText = myGame.score;
+            document.getElementById('myStatus').innerText = myReady ? "READY" : "WAITING";
+            if (myGame.gameOver) document.getElementById('myStatus').innerText = "GAME OVER";
+            
+            drawBoard(myCtx, myGame, true); // True = draw ghost
+            drawNextPiece(myGame.nextPiece);
+        }
+
+        // Opponents
+        renderOpponents(room);
+    }
+
+    function renderOpponents(room) {
+        // Clear grid logic - simplified: wipe and rebuild if count changes, or just update ids.
+        // For stability, let's map existing slots to sessionIds.
+        
+        const opponentIds = Object.keys(room.games).filter(id => id !== mySessionId);
+        
+        // Sync DOM elements
+        // 1. Remove opponents not in room
+        const existingCards = document.querySelectorAll('.opponent-card');
+        existingCards.forEach(card => {
+            if (!opponentIds.includes(card.dataset.id)) {
+                card.remove();
+            }
+        });
+
+        // 2. Add/Update opponents
+        opponentIds.forEach(id => {
+            let card = document.querySelector(`.opponent-card[data-id="${id}"]`);
+            if (!card) {
+                card = document.createElement('div');
+                card.className = 'opponent-card';
+                card.dataset.id = id;
+                card.innerHTML = `
+                    <div class="opponent-name">Player ${id.substr(0,4)} <span class="ready-badge" id="badge-${id}">READY</span></div>
+                    <canvas width="100" height="200"></canvas>
+                    <div class="status-overlay" id="overlay-${id}">GAME OVER</div>
+                `;
+                opponentsGrid.appendChild(card);
+            }
+            
+            // Update UI
+            const game = room.games[id];
+            const isReady = room.readyStatus[id];
+            
+            const badge = card.querySelector(`#badge-${id}`);
+            badge.style.display = (!room.playing && isReady) ? 'inline-block' : 'none';
+
+            const overlay = card.querySelector(`#overlay-${id}`);
+            overlay.style.display = game.gameOver ? 'flex' : 'none';
+
+            const ctx = card.querySelector('canvas').getContext('2d');
+            // Scale context for smaller size
+            // Original 240x480 (10x20 blocks of 24px)
+            // Target 100x200 (10x20 blocks of 10px)
+            // We can just use the standard drawBoard with a smaller blockSize param
+            drawBoard(ctx, game, false, 10);
+        });
+    }
+
+    function drawBoard(ctx, game, drawGhost = false, blockSize = BLOCK_SIZE) {
+        // Clear
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+        // Board
+        for (let y = 0; y < HEIGHT; y++) {
+            for (let x = 0; x < WIDTH; x++) {
+                if (game.board[y][x] !== 0) {
+                    drawBlock(ctx, x, y, game.board[y][x], blockSize);
                 }
             }
         }
-        
-        // Draw current piece
-        if (game.currentPiece) {
-            const piece = game.currentPiece;
-            const shape = piece.shape;
-            const color = COLORS[piece.shapeIndex + 1];
+
+        // Active Piece
+        if (game.currentPiece && !game.gameOver) {
+            const shape = game.currentPiece.shape;
+            const pos = game.currentPiece.position;
+            const colorIdx = game.currentPiece.shapeIndex + 1;
+
+            // GHOST
+            if (drawGhost) {
+                // Simulate drop
+                let ghostY = pos.y;
+                while (!checkCollision(game.board, shape, pos.x, ghostY + 1)) {
+                    ghostY++;
+                }
+                
+                // Draw Ghost
+                ctx.globalAlpha = 0.3;
+                for (let y = 0; y < shape.length; y++) {
+                    for (let x = 0; x < shape[y].length; x++) {
+                        if (shape[y][x] !== 0) {
+                             if (ghostY + y >= 0) {
+                                drawBlock(ctx, pos.x + x, ghostY + y, colorIdx, blockSize);
+                             }
+                        }
+                    }
+                }
+                ctx.globalAlpha = 1.0;
+            }
+
+            // Actual Piece
             for (let y = 0; y < shape.length; y++) {
                 for (let x = 0; x < shape[y].length; x++) {
                     if (shape[y][x] !== 0) {
-                        drawCell(ctx, piece.position.x + x, piece.position.y + y, color);
+                         if (pos.y + y >= 0) {
+                            drawBlock(ctx, pos.x + x, pos.y + y, colorIdx, blockSize);
+                         }
                     }
                 }
             }
         }
+    }
 
-        // Draw next piece
-        nctx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
-        if (game.nextPiece) {
-            const piece = game.nextPiece;
-            const shape = piece.shape;
-            const color = COLORS[piece.shapeIndex + 1];
-             const xs = [];
-             const ys = [];
-             for(let y=0; y<shape.length; y++){
-                 for(let x=0; x<shape[y].length; x++){
-                     if(shape[y][x] !== 0){
-                         xs.push(x);
-                         ys.push(y);
-                     }
-                 }
-             }
-            const minX = Math.min(...xs), maxX = Math.max(...xs);
-            const minY = Math.min(...ys), maxY = Math.max(...ys);
-            const w = (maxX - minX + 1) * 24;
-            const h = (maxY - minY + 1) * 24;
-            const offsetX = (nextCanvas.width - w) / 2 - minX * 24;
-            const offsetY = (nextCanvas.height - h) / 2 - minY * 24;
+    function drawNextPiece(piece) {
+        nextCtx.fillStyle = '#000';
+        nextCtx.fillRect(0, 0, nextCanvas.width, nextCanvas.height);
+        
+        if (!piece) return;
+        
+        const shape = SHAPES[piece.shapeIndex][0]; // Default rotation
+        const colorIdx = piece.shapeIndex + 1;
+        const size = 15; // Smaller blocks for preview
+        
+        // Center it roughly
+        const offsetX = (nextCanvas.width - (shape[0].length * size)) / 2;
+        const offsetY = (nextCanvas.height - (shape.length * size)) / 2;
 
-            for (let y = 0; y < shape.length; y++) {
-                for (let x = 0; x < shape[y].length; x++) {
-                    if (shape[y][x] !== 0) {
-                       drawCell(nctx, (offsetX/24) + x, (offsetY/24) + y, color, 24);
-                    }
+        for (let y = 0; y < shape.length; y++) {
+            for (let x = 0; x < shape[y].length; x++) {
+                if (shape[y][x] !== 0) {
+                    nextCtx.fillStyle = COLORS[colorIdx];
+                    nextCtx.fillRect(offsetX + x * size, offsetY + y * size, size, size);
+                    nextCtx.strokeStyle = '#555';
+                    nextCtx.strokeRect(offsetX + x * size, offsetY + y * size, size, size);
                 }
             }
         }
-
-        // Update score
-        document.getElementById('score').textContent = game.score;
-        document.getElementById('lines').textContent = game.linesCleared;
-        
-        // Game Over
-        if (game.gameOver) {
-            ctx.fillStyle = 'rgba(0,0,0,0.6)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#fff';
-            ctx.textAlign = 'center';
-            ctx.font = 'bold 28px system-ui';
-            ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2);
-        }
     }
 
-    function drawCell(context, x, y, color, size = TILE) {
-        context.fillStyle = color;
-        context.fillRect(x * size, y * size, size, size);
-        context.strokeStyle = '#111';
-        context.lineWidth = 2;
-        context.strokeRect(x * size, y * size, size, size);
+    function drawBlock(ctx, x, y, colorIndex, size) {
+        ctx.fillStyle = COLORS[colorIndex] || '#fff';
+        ctx.fillRect(x * size, y * size, size, size);
+        ctx.strokeStyle = '#333';
+        ctx.strokeRect(x * size, y * size, size, size);
     }
 
-    window.addEventListener('keydown', (e) => {
-        if (stompClient && stompClient.connected) {
-            switch (e.code) {
-                case 'ArrowLeft': sendMove('left'); break;
-                case 'ArrowRight': sendMove('right'); break;
-                case 'ArrowUp': sendMove('rotate'); break;
-                case 'ArrowDown': sendMove('down'); break; // soft drop
-                case 'Space': sendMove('drop'); break; // hard drop
+    // Collision Detection for Ghost (Client-side mirror of server logic)
+    function checkCollision(board, shape, pX, pY) {
+        for (let y = 0; y < shape.length; y++) {
+            for (let x = 0; x < shape[y].length; x++) {
+                if (shape[y][x] !== 0) {
+                    let boardX = pX + x;
+                    let boardY = pY + y;
+                    
+                    if (boardX < 0 || boardX >= WIDTH || boardY >= HEIGHT) return true;
+                    if (boardY >= 0 && board[boardY][boardX] !== 0) return true;
+                }
             }
         }
-    });
-    
-    document.getElementById('restart').addEventListener('click', () => {
-      location.reload();
+        return false;
+    }
+
+    // Controls
+    document.addEventListener('keydown', function(event) {
+        if (!isPlaying) return;
+
+        switch(event.code) {
+            case 'ArrowLeft': stompClient.send("/app/move", {}, "left"); break;
+            case 'ArrowRight': stompClient.send("/app/move", {}, "right"); break;
+            case 'ArrowUp': stompClient.send("/app/move", {}, "rotate"); break;
+            case 'ShiftLeft': 
+            case 'ShiftRight': 
+                stompClient.send("/app/move", {}, "rotateCCW"); 
+                break;
+            case 'Space': stompClient.send("/app/move", {}, "drop"); break;
+            case 'ArrowDown': stompClient.send("/app/move", {}, "down"); break; // If backend supports soft drop or ignore
+        }
     });
 
     connect();
-    
-  </script>
+
+</script>
 </body>
 </html>
